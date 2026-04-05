@@ -22,29 +22,15 @@ Most RAG demos stop at basic vector search. This project implements the full pro
 
 ## Architecture
 
-Document (.txt / .pdf)
-│
-▼
-Text Chunking (RecursiveCharacterTextSplitter, 500 chars, 100 overlap)
-│
-├──────────────────────────┐
-▼ ▼
-FAISS Vector Store BM25 Index
-(all-MiniLM-L6-v2) (rank-bm25)
-│ │
-└──────────┬───────────────┘
-▼
-Reciprocal Rank Fusion
-│
-▼
-Cross-Encoder Reranker
-(ms-marco-MiniLM-L-6-v2)
-│
-▼
-Ollama LLM (Llama 3.2)
-│
-▼
-Grounded Answer
+The pipeline runs in 6 stages:
+
+1. **Document Loading** — Accepts `.txt` or `.pdf` files via LangChain loaders
+2. **Text Chunking** — Splits documents into 500-character chunks with 100-character overlap using `RecursiveCharacterTextSplitter`
+3. **Hybrid Retrieval** — Runs both FAISS vector search (`all-MiniLM-L6-v2`) and BM25 keyword search in parallel, then merges results using Reciprocal Rank Fusion (RRF)
+4. **Reranking** — A cross-encoder (`ms-marco-MiniLM-L-6-v2`) re-scores the top candidates by reading the query and each chunk together
+5. **LLM Inference** — Top 3 reranked chunks are passed as context to Llama 3.2 running locally via Ollama
+6. **Grounded Answer** — The LLM responds using only the provided context, refusing to hallucinate if the answer isn't there
+
 ---
 
 ## Evaluation Results
@@ -80,7 +66,7 @@ Evaluated across 5 test questions using a custom harness measuring three metrics
 | Document Loaders | LangChain (PDF + TXT) |
 
 ---
-
+```
 ## Project Structure
 
 rag-pipeline/
@@ -98,7 +84,7 @@ rag-pipeline/
 │ └── eval_results.json
 ├── requirements.txt
 └── README.md
-
+```
 ---
 
 ## Setup
