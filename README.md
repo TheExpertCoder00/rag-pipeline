@@ -23,29 +23,28 @@ Most RAG demos stop at basic vector search. This project implements the full pro
 ## Architecture
 
 Document (.txt / .pdf)
-        │
-        ▼
- Text Chunking (RecursiveCharacterTextSplitter, 500 chars, 100 overlap)
-        │
-        ├──────────────────────────┐
-        ▼                          ▼
- FAISS Vector Store          BM25 Index
- (all-MiniLM-L6-v2)         (rank-bm25)
-        │                          │
-        └──────────┬───────────────┘
-                   ▼
-        Reciprocal Rank Fusion
-                   │
-                   ▼
-        Cross-Encoder Reranker
-        (ms-marco-MiniLM-L-6-v2)
-                   │
-                   ▼
-          Ollama LLM (Llama 3.2)
-                   │
-                   ▼
-            Grounded Answer
-
+│
+▼
+Text Chunking (RecursiveCharacterTextSplitter, 500 chars, 100 overlap)
+│
+├──────────────────────────┐
+▼ ▼
+FAISS Vector Store BM25 Index
+(all-MiniLM-L6-v2) (rank-bm25)
+│ │
+└──────────┬───────────────┘
+▼
+Reciprocal Rank Fusion
+│
+▼
+Cross-Encoder Reranker
+(ms-marco-MiniLM-L-6-v2)
+│
+▼
+Ollama LLM (Llama 3.2)
+│
+▼
+Grounded Answer
 ---
 
 ## Evaluation Results
@@ -84,20 +83,21 @@ Evaluated across 5 test questions using a custom harness measuring three metrics
 
 ## Project Structure
 
-src/
-├── document_loader.py    # PDF/TXT loading and recursive chunking
-├── vector_store.py       # FAISS index build and load
-├── bm25_retriever.py     # BM25 keyword retriever
-├── hybrid_retriever.py   # RRF fusion of BM25 + FAISS
-├── reranker.py           # Cross-encoder reranking
-├── llm.py                # Ollama LLM integration
-├── evaluator.py          # Custom evaluation harness
-└── app.py                # Gradio UI
-data/
-├── sample.txt
-└── eval_results.json
-requirements.txt
-README.md
+rag-pipeline/
+├── src/
+│ ├── document_loader.py # PDF/TXT loading and recursive chunking
+│ ├── vector_store.py # FAISS index build and load
+│ ├── bm25_retriever.py # BM25 keyword retriever
+│ ├── hybrid_retriever.py # RRF fusion of BM25 + FAISS
+│ ├── reranker.py # Cross-encoder reranking
+│ ├── llm.py # Ollama LLM integration
+│ ├── evaluator.py # Custom evaluation harness
+│ └── app.py # Gradio UI
+├── data/
+│ ├── sample.txt
+│ └── eval_results.json
+├── requirements.txt
+└── README.md
 
 ---
 
@@ -106,28 +106,33 @@ README.md
 **Prerequisites:** Python 3.11+ and [Ollama](https://ollama.com) installed.
 
 **1. Clone the repo**
-
+```bash
 git clone https://github.com/YOUR_USERNAME/rag-pipeline.git
 cd rag-pipeline
+```
 
 **2. Create virtual environment**
-
+```bash
 python -m venv venv
 venv\Scripts\activate
+```
 
 **3. Install dependencies**
-
+```bash
 pip install -r requirements.txt
+```
 
 **4. Pull the LLM**
-
+```bash
 ollama pull llama3.2
+```
 
 **5. Run the app**
-
+```bash
 python src/app.py
+```
 
-Open http://127.0.0.1:7860 in your browser.
+Open `http://127.0.0.1:7860` in your browser.
 
 ---
 
