@@ -1,6 +1,6 @@
 # Production RAG Pipeline
 
-A production-style Retrieval-Augmented Generation (RAG) system built from scratch in Python. Combines hybrid retrieval, cross-encoder reranking, local LLM inference, and a custom evaluation harness — no paid APIs required.
+A production-style Retrieval-Augmented Generation (RAG) system built from scratch in Python. Combines hybrid retrieval, cross-encoder reranking, local LLM inference, and a custom evaluation harness (no paid API's required).
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat-square&logo=python)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
@@ -12,11 +12,11 @@ A production-style Retrieval-Augmented Generation (RAG) system built from scratc
 
 Most RAG demos stop at basic vector search. This project implements the full production stack:
 
-- **Hybrid Retrieval** — BM25 keyword search + FAISS vector similarity, fused with Reciprocal Rank Fusion (RRF)
-- **Cross-Encoder Reranking** — a BERT-based reranker re-scores retrieved chunks by reading the query and chunk *together*, not independently
-- **Local LLM Inference** — Llama 3.2 via Ollama runs entirely on-device with no API key or internet connection required
-- **Custom Evaluation Harness** — faithfulness, relevancy, and coverage scored via cosine similarity across a test suite of questions
-- **Gradio UI** — clean dark-themed interface with document upload, Q&A, and source chunk transparency
+- **Hybrid Retrieval**: BM25 keyword search + FAISS vector similarity, fused with Reciprocal Rank Fusion (RRF)
+- **Cross-Encoder Reranking**: a BERT-based reranker re-scores retrieved chunks by reading the query and chunk *together*, not independently
+- **Local LLM Inference**: Llama 3.2 via Ollama runs entirely on-device with no API key or internet connection required
+- **Custom Evaluation Harness**: faithfulness, relevancy, and coverage scored via cosine similarity across a test suite of questions
+- **Gradio UI**: clean dark-themed interface with document upload, Q&A, and source chunk transparency
 
 ---
 
@@ -24,12 +24,12 @@ Most RAG demos stop at basic vector search. This project implements the full pro
 
 The pipeline runs in 6 stages:
 
-1. **Document Loading** — Accepts `.txt` or `.pdf` files via LangChain loaders
-2. **Text Chunking** — Splits documents into 500-character chunks with 100-character overlap using `RecursiveCharacterTextSplitter`
-3. **Hybrid Retrieval** — Runs both FAISS vector search (`all-MiniLM-L6-v2`) and BM25 keyword search in parallel, then merges results using Reciprocal Rank Fusion (RRF)
-4. **Reranking** — A cross-encoder (`ms-marco-MiniLM-L-6-v2`) re-scores the top candidates by reading the query and each chunk together
-5. **LLM Inference** — Top 3 reranked chunks are passed as context to Llama 3.2 running locally via Ollama
-6. **Grounded Answer** — The LLM responds using only the provided context, refusing to hallucinate if the answer isn't there
+1. **Document Loading**: Accepts `.txt` or `.pdf` files via LangChain loaders
+2. **Text Chunking**: Splits documents into 500-character chunks with 100-character overlap using `RecursiveCharacterTextSplitter`
+3. **Hybrid Retrieval**: Runs both FAISS vector search (`all-MiniLM-L6-v2`) and BM25 keyword search in parallel, then merges results using Reciprocal Rank Fusion (RRF)
+4. **Reranking**: A cross-encoder (`ms-marco-MiniLM-L-6-v2`) re-scores the top candidates by reading the query and each chunk together
+5. **LLM Inference**: Top 3 reranked chunks are passed as context to Llama 3.2 running locally via Ollama
+6. **Grounded Answer**: The LLM responds using only the provided context, refusing to hallucinate if the answer isn't there
 
 ---
 
@@ -46,9 +46,9 @@ Evaluated across 5 test questions using a custom harness measuring three metrics
 | How does AI help programmers? | 0.771 | 0.699 | 0.793 | 0.754 |
 | **Overall** | **0.729** | **0.672** | **0.772** | **0.724** |
 
-- **Faithfulness** — is the answer grounded in the retrieved context?
-- **Relevancy** — did retrieval surface chunks relevant to the question?
-- **Coverage** — does the answer address what was actually asked?
+- **Faithfulness**: is the answer grounded in the retrieved context?
+- **Relevancy**: did retrieval surface chunks relevant to the question?
+- **Coverage**: does the answer address what was actually asked?
 
 ---
 
@@ -128,7 +128,7 @@ Pure vector search understands meaning but can miss exact keywords. Pure BM25 ma
 
 ## Why a Custom Eval Harness?
 
-Most student RAG projects just demo a working answer. This project measures *how well* the pipeline performs across multiple questions using three independent metrics. The harness runs entirely locally using cosine similarity between embeddings — no external eval API, no GPT-4 judge.
+Most student RAG projects just demo a working answer. This project measures *how well* the pipeline performs across multiple questions using three independent metrics. The harness runs entirely locally using cosine similarity between embeddings; no external eval API, no GPT-4 judge.
 
 ---
 
