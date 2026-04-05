@@ -25,7 +25,7 @@ body, .gradio-container {
 .main-header h1 {
     font-size: 2.4rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
+    background: linear-gradient(135deg, #1d4ed8, #2563eb, #0ea5e9);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 0.4rem;
@@ -52,7 +52,7 @@ body, .gradio-container {
 }
 
 button.primary-btn {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;
     border: none !important;
     border-radius: 10px !important;
     color: white !important;
@@ -68,7 +68,7 @@ button.primary-btn:hover { opacity: 0.88 !important; }
 
 .answer-box {
     background: #0d1117 !important;
-    border: 1px solid #6366f1 !important;
+    border: 1px solid #2563eb !important;
     border-radius: 10px !important;
     padding: 1rem !important;
     font-size: 0.95rem !important;
@@ -79,7 +79,7 @@ button.primary-btn:hover { opacity: 0.88 !important; }
 
 .chunk-card {
     background: #161b27;
-    border-left: 3px solid #6366f1;
+    border-left: 3px solid #2563eb;
     border-radius: 8px;
     padding: 1rem 1.2rem;
     margin-bottom: 1rem;
@@ -91,7 +91,7 @@ button.primary-btn:hover { opacity: 0.88 !important; }
 .chunk-label {
     font-size: 0.7rem;
     font-weight: 600;
-    color: #8b5cf6;
+    color: #0ea5e9;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin-bottom: 0.4rem;
@@ -129,8 +129,8 @@ input, textarea {
 }
 
 input:focus, textarea:focus {
-    border-color: #6366f1 !important;
-    box-shadow: 0 0 0 3px rgba(99,102,241,0.15) !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.15) !important;
 }
 
 .upload-area {
@@ -140,7 +140,7 @@ input:focus, textarea:focus {
     transition: border-color 0.2s !important;
 }
 
-.upload-area:hover { border-color: #6366f1 !important; }
+.upload-area:hover { border-color: #2563eb !important; }
 
 footer { display: none !important; }
 """
@@ -180,7 +180,7 @@ def ask_question(query):
 
 HEADER = """
 <div class='main-header'>
-    <h1>🔍 Production RAG Pipeline</h1>
+    <h1>Production RAG Pipeline</h1>
     <p>Hybrid retrieval · Cross-encoder reranking · Local LLM inference · Zero paid APIs</p>
 </div>
 """
