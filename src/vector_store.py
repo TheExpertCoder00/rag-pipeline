@@ -25,10 +25,10 @@ def load_vector_store():
 
 if __name__ == "__main__":
     from document_loader import load_document, chunk_documents
-    docs = load_document("data/sample.txt") #just a sample document of a wikipedia arcticle about oil
+    docs = load_document("data/sample.txt") #just a sample document about AI
     chunks = chunk_documents(docs)
     vector_store = build_vector_store(chunks)
-    query = "what is oil?" #replace with your query
+    query = "is AI ethical?" #replace with your query
     results = vector_store.similarity_search(query, k=3)
     print(f"\nTop 3 results for: '{query}'")
     for i, r in enumerate(results):
