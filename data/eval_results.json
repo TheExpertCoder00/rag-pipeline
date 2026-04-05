@@ -1,0 +1,42 @@
+[
+  {
+    "question": "what are the risks of AI development?",
+    "answer": "According to the context, some researchers argue that the development of more capable AI systems poses existential risks to humanity, while others dismiss this as speculation. However, most researchers across different political spectrums agree that thinking carefully about these questions now is better than waiting until they do exist.",
+    "faithfulness": 0.737,
+    "relevancy": 0.689,
+    "coverage": 0.627,
+    "avg_score": 0.684
+  },
+  {
+    "question": "how does AI affect employment?",
+    "answer": "The impact of AI on employment is complex and varies across professions. While some jobs have seen significant productivity improvements without major employment losses (e.g., programmers), others have experienced more direct displacement, particularly in areas like content moderation, data entry, and basic customer service.\n\nAI has the potential to automate many tasks that previously required cognitive labor, which may lead to a significant decrease in the number of humans needed for these tasks. This raises questions about the future of work and the skills that will be most in demand.",
+    "faithfulness": 0.787,
+    "relevancy": 0.672,
+    "coverage": 0.775,
+    "avg_score": 0.745
+  },
+  {
+    "question": "what is the governance gap in AI?",
+    "answer": "The governance gap in AI refers to the disparity between the rapid pace of AI development and the slow response of institutions governing it.",
+    "faithfulness": 0.641,
+    "relevancy": 0.666,
+    "coverage": 0.892,
+    "avg_score": 0.733
+  },
+  {
+    "question": "how do great powers compete in AI?",
+    "answer": "I don't have enough context to answer that. The provided text discusses the challenges of AI governance and the importance of collective action, but it does not specifically address how great powers compete in AI.",
+    "faithfulness": 0.709,
+    "relevancy": 0.633,
+    "coverage": 0.771,
+    "avg_score": 0.704
+  },
+  {
+    "question": "how does AI help programmers?",
+    "answer": "AI helps programmers in several ways:\n\n1. Code generation: AI can write functional code from natural language descriptions.\n2. Code completion: AI suggests completions as programmers type.\n3. Bug identification: AI identifies bugs in the code.\n4. Code explanation: AI explains unfamiliar code to developers.\n5. Program translation: AI translates programs from one language to another.\n\nThese tools enable developers to complete tasks significantly faster, but often require human review due to variations in code quality.",
+    "faithfulness": 0.771,
+    "relevancy": 0.699,
+    "coverage": 0.793,
+    "avg_score": 0.754
+  }
+]
